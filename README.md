@@ -8,10 +8,10 @@
 
 A simplified module for tracking user web-based activities
 
-Installation
+## Installation
 ------------
 
-The preferred way to install this extension is through [composer](http://getcomposer.org/download/):
+The preferred way to install this module is through [composer](http://getcomposer.org/download/):
 
 Either run
 
@@ -19,16 +19,11 @@ Either run
 php composer.phar require --prefer-dist r2am9d/yii2-activity-log
 ```
 
-or add
+or add to the require-dev section of your `composer.json` file.
 
 ```
 "r2am9d/yii2-activity-log": "*"
 ```
-
-to the require-dev section of your `composer.json` file.
-
-Usage
------------
 
 Once the extension is installed, simply add the lines below to your "modules" application configuration.
 
@@ -42,7 +37,32 @@ return [
 ];
 ```
 
-Afterwards apply the custom behavior to your Controller or Model class via the inherited "behaviors" function.
+Then add these lines to your "controllerMap" application configuration.
+
+```php
+return [
+    'controllerMap' => [
+        'migrate' => [
+            'class' => 'yii\console\controllers\MigrateController',
+            'migrationPath' => [
+                '@app/migrations',
+                '@vendor/r2am9d/yii2-activity-log/migrations',
+            ],
+        ],
+    ],
+];
+```
+
+Lastly, run the migrations.
+
+```bash
+~$ php yii migrate
+```
+
+## Usage
+-----------
+
+Apply the custom behavior to your Controller or Model class via inherited "behaviors" function.
 
 ```php
 /**
@@ -55,6 +75,9 @@ public function behaviors()
     ];
 }
 ```
+
+## Accessing module
+-----------
 
 You can then access the module through the following URL:
 
