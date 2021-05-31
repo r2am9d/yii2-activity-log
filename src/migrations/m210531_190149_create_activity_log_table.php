@@ -1,11 +1,11 @@
 <?php
 
-use yii\db\Migration;
+namespace r2am9d\activitylog\migrations;
 
 /**
  * Handles the creation of table `{{%activity_log}}`.
  */
-class m210531_190149_create_activity_log_table extends Migration
+class m210531_190149_create_activity_log_table extends \yii\db\Migration
 {
     /**
      * {@inheritdoc}
