@@ -19,7 +19,7 @@ use r2am9d\activitylog\models\ActivityLog;
  * public function behaviors()
  * {
  *     return [
- *         \app\behaviors\ActivityLogBehavior::className(),
+ *         \r2am9d\activitylog\behaviors\ActivityLogBehavior::className(),
  *     ];
  * }
  * ```

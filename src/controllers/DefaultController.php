@@ -36,8 +36,11 @@ class DefaultController extends \yii\web\Controller
     {
         $searchModel = new ActivityLogSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        
+        $users = []; // @todo
 
         return $this->render('index', [
+            'users' => $users,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

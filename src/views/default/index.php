@@ -8,15 +8,13 @@ use yii\helpers\Inflector;
 use kartik\datetime\DateTimePicker;
 use rmrevin\yii\fontawesome\FA;
 
-$users = []; // @todo
-
 /* @var $this yii\web\View */
 /* @var $searchModel r2am9d\activitylog\models\ActivityLogSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Activity Logs';
 $this->params['breadcrumbs'][] = $this->title;
-$mTitle = Inflector::singularize(strtolower($this->title));
+$mTitle = str_replce(' ', '-', Inflector::singularize(strtolower($this->title)));
 ?>
 <div class="activity-log-index">
 
