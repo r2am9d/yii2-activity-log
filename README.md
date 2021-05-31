@@ -9,7 +9,6 @@
 A simplified module for tracking user web-based activities
 
 ## Installation
-------------
 
 The preferred way to install this module is through [composer](http://getcomposer.org/download/):
 
@@ -60,7 +59,6 @@ Lastly, run the migrations.
 ```
 
 ## Usage
------------
 
 Apply the custom behavior to your Controller or Model class via inherited "behaviors" function.
 
@@ -77,7 +75,6 @@ public function behaviors()
 ```
 
 ## Accessing module
------------
 
 You can then access the module through the following URL:
 
