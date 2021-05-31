@@ -1,0 +1,46 @@
+{
+    "name": "r2am9d/yii2-activity-log",
+    "description": "A simplified module for tracking user web-based activities",
+    "keywords": ["yii2", "log", "activity", "user"],
+    "type": "yii2-module",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/r2am9d/yii2-activity-log/issues",
+        "forum": "http://www.yiiframework.com/forum/",
+        "wiki": "http://www.yiiframework.com/wiki/",
+        "irc": "irc://irc.freenode.net/yii",
+        "source": "https://github.com/yiisoft/yii2-gii"
+    },
+    "authors": [
+        {
+            "name": "Ram Delatina",
+            "email": "r2am9d@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "yiisoft/yii2": "~2.0.14",
+        "maciejczyzewski/bottomline": "~0.2.0",
+        "rmrevin/yii2-fontawesome": "~2.17.1",
+        "kartik-v/yii2-grid": "*",
+        "kartik-v/yii2-widget-select2": "*",
+        "kartik-v/yii2-widget-datetimepicker": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "r2am9d\\activitylog\\": "src"
+        }
+    },
+    "config": {
+        "process-timeout": 1800,
+        "fxp-asset": {
+            "enabled": false
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
+}
