@@ -3,7 +3,6 @@
 namespace r2am9d\activitylog\models;
 
 use Yii;
-$User = Yii::$app->user->identity;
 
 /**
  * This is the model class for table "activity_log".
@@ -22,6 +21,16 @@ $User = Yii::$app->user->identity;
  */
 class ActivityLog extends \yii\db\ActiveRecord
 {
+    private $_user;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function init()
+    {
+        $this->_user = Yii::$app->user->identity;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -50,7 +59,7 @@ class ActivityLog extends \yii\db\ActiveRecord
             [['user_id', 'created_at', 'updated_at'], 'integer'],
             [['type', 'data'], 'string'],
             [['class', 'method', 'route'], 'string', 'max' => 255],
-            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => $User::className(), 'targetAttribute' => ['user_id' => 'id']],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => $this->_user::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -79,6 +88,6 @@ class ActivityLog extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne($User::className(), ['id' => 'user_id']);
+        return $this->hasOne($this->_user::className(), ['id' => 'user_id']);
     }
 }
