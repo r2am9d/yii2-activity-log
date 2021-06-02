@@ -6,7 +6,7 @@
     <br>
 </p>
 
-A simplified module for tracking user web-based activities
+A simplified Yii2 module for tracking user web-based activities
 
 ## Installation
 

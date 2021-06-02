@@ -1,8 +1,8 @@
 {
     "name": "r2am9d/yii2-activity-log",
-    "description": "A simplified module for tracking user web-based activities",
-    "keywords": ["yii2", "log", "activity", "user", "module"],
-    "type": "yii2-module",
+    "description": "A simplified yii2 module for tracking user web-based activities",
+    "keywords": ["yii2", "log", "activity", "user", "module", "extension"],
+    "type": "yii2-extension",
     "license": "BSD-3-Clause",
     "support": {
         "issues": "https://github.com/r2am9d/yii2-activity-log/issues",
