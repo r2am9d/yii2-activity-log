@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model r2am9d\activitylog\models\ActivityLog */
 
 $this->title = 'Update Activity Log: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Activity Logs', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Activity Log', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

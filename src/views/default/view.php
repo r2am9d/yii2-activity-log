@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model r2am9d\activitylog\models\ActivityLog */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Activity Logs', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Activity Log', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="activity-log-view box box-primary">

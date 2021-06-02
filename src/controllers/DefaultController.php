@@ -7,6 +7,7 @@ use r2am9d\activitylog\models\ActivityLog;
 use r2am9d\activitylog\models\ActivityLogSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 
 /**
  * Default controller for the `activity-log` module
@@ -36,8 +37,10 @@ class DefaultController extends \yii\web\Controller
     {
         $searchModel = new ActivityLogSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        
-        $users = []; // @todo
+        $users = ArrayHelper::map(
+            Yii::$app->user->identity::find()->all(), 
+            'id', function($x) { return $x->profile->name; }
+        );
 
         return $this->render('index', [
             'users' => $users,

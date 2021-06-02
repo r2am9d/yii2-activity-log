@@ -4,7 +4,6 @@ use yii\web\View;
 use yii\helpers\Url;
 use yii\helpers\Html;
 use kartik\grid\GridView;
-use yii\helpers\Inflector;
 use kartik\datetime\DateTimePicker;
 use rmrevin\yii\fontawesome\FA;
 
@@ -12,9 +11,9 @@ use rmrevin\yii\fontawesome\FA;
 /* @var $searchModel r2am9d\activitylog\models\ActivityLogSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Activity Logs';
+$this->title = 'Activity Log';
 $this->params['breadcrumbs'][] = $this->title;
-$mTitle = str_replce(' ', '-', Inflector::singularize(strtolower($this->title)));
+$mTitle = \str_replace(' ', '-', \strtolower($this->title));
 ?>
 <div class="activity-log-index">
 

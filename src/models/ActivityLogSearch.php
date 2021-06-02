@@ -64,7 +64,7 @@ class ActivityLogSearch extends ActivityLog
         // add conditions that should always apply here
         $this->trigger(self::EVENT_BEFORE_QUERY);
         
-        $query = Log::find();
+        $query = ActivityLog::find();
 
         // grid filtering conditions
         $query->andFilterWhere([
