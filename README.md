@@ -43,9 +43,8 @@ return [
     'controllerMap' => [
         'migrate' => [
             'class' => 'yii\console\controllers\MigrateController',
-            'migrationPath' => [
-                '@app/migrations',
-                '@vendor/r2am9d/yii2-activity-log/migrations',
+            'migrationNamespaces' => [
+                'r2am9d\activitylog\migrations',
             ],
         ],
     ],
