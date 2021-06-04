@@ -33,7 +33,7 @@ $mTitle = \str_replace(' ', '-', \strtolower($this->title));
         'panelFooterTemplate' => "<div class='table-summary'>{summary}{pager}</div>",
         'headerRowOptions' => ['id' => "{$mTitle}-grid-headers"],
         'filterRowOptions' => ['id' => "{$mTitle}-grid-filters"],
-        'rowOptions' => ['class' => "{$mTitle}-grid-items"],
+        'rowOptions' => ['class' => "{$mTitle}-grid-item"],
         'columns' => [
             ['class' => 'kartik\grid\SerialColumn'],
 

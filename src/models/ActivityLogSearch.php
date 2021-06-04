@@ -12,6 +12,8 @@ use r2am9d\activitylog\models\ActivityLog;
  */
 class ActivityLogSearch extends ActivityLog
 {
+    private $_query;
+
     const EVENT_BEFORE_QUERY = 'beforeQuery';
     const EVENT_AFTER_QUERY = 'afterQuery';
 
@@ -57,31 +59,35 @@ class ActivityLogSearch extends ActivityLog
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
+            // $this->_query->where('0=1');
             return $dataProvider;
         }
 
+        $this->_query = ActivityLog::find();
+
         // add conditions that should always apply here
         $this->trigger(self::EVENT_BEFORE_QUERY);
-        
-        $query = ActivityLog::find();
 
         // grid filtering conditions
-        $query->andFilterWhere([
+        $this->_query->andFilterWhere([
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'created_at' => $this->created_at,
+            // 'created_at', $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'type', $this->type])
+        $this->_query->andFilterWhere([
+            '>=', 'created_at', $this->created_at
+        ]);
+
+        $this->_query->andFilterWhere(['like', 'type', $this->type])
             ->andFilterWhere(['like', 'class', $this->class])
             ->andFilterWhere(['like', 'method', $this->method])
             ->andFilterWhere(['like', 'route', $this->route])
             ->andFilterWhere(['like', 'data', $this->data]);
 
         $dataProvider = new ActiveDataProvider([
-            'query' => $query,
+            'query' => $this->_query,
             'sort' => ['defaultOrder' => ['id' => SORT_DESC]]
         ]);
 
@@ -94,7 +100,7 @@ class ActivityLogSearch extends ActivityLog
      * @inheritdoc
      */
     protected function beforeQuery($event)
-    {
+    {   
         if(!empty($this->created_at)) {
             $this->created_at = strtotime($this->created_at);
         }
@@ -107,6 +113,7 @@ class ActivityLogSearch extends ActivityLog
     {
         if (!empty($this->created_at)) {
             $this->created_at = date('d F Y h:i:s A', $this->created_at);
+            $this->_query->orderBy(['created_at' => SORT_ASC]);
         }
     }
 }

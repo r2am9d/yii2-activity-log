@@ -60,7 +60,7 @@ class ActivityLogBehavior extends \yii\base\Behavior
 
                     $class = get_class($model);
                     $route = $app->requestedRoute ?: '-';
-                    $action = \array_key_exists('actionMethod', $model->action) ?
+                    $action = array_key_exists('actionMethod', $model->action) ?
                         $model->action->actionMethod : 'error';
                     $method = $this->getMethod($action);
 
@@ -68,14 +68,14 @@ class ActivityLogBehavior extends \yii\base\Behavior
                     $bodyParams = $model->request->bodyParams;
                     unset($bodyParams['_csrf']);
 
-                    $data = \json_encode([
+                    $data = json_encode([
                         'queryParams' => $queryParams,
                         'bodyParams' => $bodyParams
                     ]);
 
                     if($action == 'error') {
                         $exception = Yii::$app->errorHandler->exception;
-                        $data = \json_encode([
+                        $data = json_encode([
                             'type' => get_class($exception),
                             'statusCode' => $exception->statusCode,
                             'message' => $exception->getMessage(),
@@ -100,18 +100,18 @@ class ActivityLogBehavior extends \yii\base\Behavior
 
                     switch ($method) {
                         case 'insert':
-                            $data = \json_encode([
+                            $data = json_encode([
                                 'attributes' => $attributes
                             ]);
                         break;
                         case 'update':
-                            $data = \json_encode([
+                            $data = json_encode([
                                 'attributes' => $attributes,
                                 'oldAttributes' => $oldAttributes
                             ]);
                         break;
                         case 'delete':
-                            $data = \json_encode([
+                            $data = json_encode([
                                 'attributes' => $attributes
                             ]);
                         break;
@@ -131,7 +131,7 @@ class ActivityLogBehavior extends \yii\base\Behavior
      */
     private function getApp($module)
     {
-        return \array_key_exists('requestedRoute', $module) ?
+        return array_key_exists('requestedRoute', $module) ?
             $module : $this->getApp($module->module);
     }
 
@@ -143,8 +143,8 @@ class ActivityLogBehavior extends \yii\base\Behavior
         $arr = __::chain(explode(' ', Inflector::camel2words($method)))
             ->map(function($w) { return strtolower($w); })
             ->filter(function($w) { 
-                return !(\strpos($w, 'action') !== false) && 
-                    !(\strpos($w, 'before') !== false);
+                return !(strpos($w, 'action') !== false) && 
+                    !(strpos($w, 'before') !== false);
             })
             ->value();
         
